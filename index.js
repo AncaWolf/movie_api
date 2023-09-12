@@ -53,6 +53,18 @@ let movies = [
     
 ]
 
+let users = [
+    {
+        id: 1,
+        name: "Lilly",
+        favouriteMovies: []
+    },
+    {
+        id: 2,
+        name: "James",
+        favouriteMovies: ["The Bridges of Madison County"]
+    },
+]
 
 app.get('/', (req, res) => {
     res.send('Movie time!');
@@ -107,7 +119,7 @@ app.post('/users', (req, res) => {
     const newUser = req.body;
 
     if (newUser.name) {
-        newUser.id = uuuid.v4();
+        newUser.id = uuid.v4();
         users.push(newUser);
         res.status(201).json(newUser);
     } else {
@@ -181,5 +193,5 @@ app.listen(8080, () => {
 // error Handling
 app.use((err, req, res, next) => {
     console.error(err.stack);
-    res.status(500).send('An error occured!')
+    res.status(500).send('An error occured!');
 });
