@@ -1,7 +1,14 @@
 const express = require('express'),
     morgan = require('morgan'),
     bodyParser = require('body-parser'),
-    uuid = require('uuid');
+    uuid = require('uuid'),
+    mongoose = require('mongoose'),
+    Models = require('./models.js');
+
+const Movies = Models.Movie;
+const Users = Models.User;
+
+mongoose.connect('mongodb://localhost:27017/cfDB', {useNewUrlParser: true, useUnifiedTopology: true });
 
 const app = express();
 
@@ -12,62 +19,6 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(morgan('common'));
 app.use('/documentation.html', express.static('public'));
-
-let movies = [
-    {
-        "Title":"The Bridges of Madison County",
-        "Description":"The life of a typical wife takes unexpected turns after encountering a photographer from out-of-town.",
-        "Genre": {
-            "Name":"Drama",
-            "Description":"In film and television, drama is a category or genre of narrative fiction (or semi-fiction) intended to be more serious than humorous in tone."
-        },
-        "Director": {
-            "Name":"Clint Eastwood",
-            "Bio":"Clinton Eastwood Jr. is an American actor and film director. After achieving success in the Western TV series Rawhide, Eastwood rose to international fame with his role as the \"Man with No Name\".",
-            "Birth": 1930
-        },
-    },
-    {
-        "Title":"House of Flying Daggers",
-        "Description":"A police captain breaks a dancer of a rebel group out of prison to help her rejoin her fellow members. He gains her trust only to use her to lead him to the new leader of the organisatio",
-        "Genre": {
-            "Name":"Drama",
-            "Description":"In film and television, drama is a category or genre of narrative fiction (or semi-fiction) intended to be more serious than humorous in tone."
-        },
-        "Director": {
-            "Name":"Yi-Mou Zhang",
-            "Bio":"Zhang Yimou is a Chinese film director, producer, writer, actor, professor and former cinematographer. Considered a key figure of China's Fifth Generation filmmakers, he made his directorial debut in 1988 with Red Sorghum, which won the Golden Bear at the Berlin International Film Festival.",
-            "Birth": 1950
-        },
-    },
-    {
-        "Title":"3000 Years of Longing",
-        "Description":"While attending a conference in Istanbul, Dr. Alithea Binnie happens to encounter a djinn who offers her three wishes in exchange for his freedom.",
-        "Genre": {
-            "Name":"Drama",
-            "Description":"In film and television, drama is a category or genre of narrative fiction (or semi-fiction) intended to be more serious than humorous in tone."
-        },
-        "Director": {
-            "Name":"George Miller",
-            "Bio":"George Miller AO is an Australian filmmaker best known for his Mad Max franchise, whose second installment, Mad Max 2, and fourth, Fury Road, have been hailed as two of the greatest action films of all time, with Fury Road winning six Academy Awards.",
-            "Birth": 1945
-        },
-    },
-    
-]
-
-let users = [
-    {
-        id: 1,
-        name: "Lilly",
-        favouriteMovies: []
-    },
-    {
-        id: 2,
-        name: "James",
-        favouriteMovies: ["The Bridges of Madison County"]
-    },
-]
 
 app.get('/', (req, res) => {
     res.send('Movie time!');
@@ -153,15 +104,15 @@ app.put('/users/:Username', async(req, res) => {
         Email: req.body.Email,
         Birthday: req.body.Birthday
     }
-},
-{ new: true})
-.then((updatedUser) => {
-    res.json(updatedUser);
-})
-.catch((err) => {
-    console.error(err);
-    res.status(500).send('Error: ' + err);
-})
+    },
+    { new: true})
+    .then((updatedUser) => {
+        res.json(updatedUser);
+    })
+    .catch((err) => {
+        console.error(err);
+        res.status(500).send('Error: ' + err);
+    })
 
 });
 
