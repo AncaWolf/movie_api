@@ -47,9 +47,9 @@ app.get('/movies', (req, res) => {
         });
 });
 
-// GET - return data about single movie by name
-app.get('/movies/:title', async (req, res) => {
-    await Movies.findOne({title: req.params.title })
+// GET - return data about single movie by title
+app.get('/movies/:title/:Title', async (req, res) => {
+    await Movies.findOne({Title: req.params.Title })
     .then((movie) => {
         res.json(movie);
     })
@@ -128,7 +128,7 @@ app.put('/users/:Username', async (req, res) => {
 
 });
 
-// POST - add movie to user's list of favorites
+// POST - add movie to user's list of favourites
 app.post('/users/:Username/movies/:MovieID', async (req, res) => {
     await Users.findOneAndUpdate({ Username: req.params.Username }, {
         $push: { FavouriteMovies: req.params.MovieID }
