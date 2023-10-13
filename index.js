@@ -60,21 +60,31 @@ app.get('/movies/title/:Title', async (req, res) => {
 });
 
 // GET - return data about genre by name
-app.get('/movies/genre/:genreName', async (req, res) => {
-    await Movies.findOne({'Genre.Name': req.params.genreName })
+app.get('/movies/genre/:Genre', async (req, res) => {
+    await Movies.findOne({'Genre.Name': req.params.Genre })
     .then((movie) => {
+        if (!movie) {
+            return res.status(404).json({
+                error: 'genre not found.'
+            })
+        }
         res.status(200).json(movie.Genre);
     })
     .catch((err) => {
         console.error(err);
         res.status(500).send('Error: ' + err);
-    });
+    });W
 });
 
 // GET - return data about director by name
-app.get('/movies/directors/:directorName', async (req, res) => {
-    Movies.findOne({'Director.Name': req.params.directorName})
+app.get('/movies/directors/:Director', async (req, res) => {
+    Movies.findOne({'Director.Name': req.params.Director})
     .then((movie) => {
+        if (!movie) {
+            return res.status(404).json({
+                error: 'director not found.'
+            })
+        }
         res.json(movie.Director);
     })
     .catch((err) => {
@@ -101,7 +111,7 @@ app.get('/users/:Name', async (req, res) => {
     .then((user) => {
         if (!user) {
             return res.status(404).json({
-                error: "user not found."
+                error: 'user not found.'
             })
         }
         res.json(user);
@@ -113,8 +123,8 @@ app.get('/users/:Name', async (req, res) => {
 });
 
 // updating a user's info by username
-app.put('/users/:Username', async (req, res) => {
-    await Users.findOneAndUpdate({ Username: req.params.Username }, { $set:
+app.put('/users/:Name', async (req, res) => {
+    await Users.findOneAndUpdate({ Name: req.params.Name }, { $set:
         {
             Name: req.body.Name,
             Password: req.body.Password,
