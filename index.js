@@ -20,32 +20,36 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(morgan('common'));
 app.use('/documentation.html', express.static('public'));
 
+let auth = require('./auth')(app);
+const passport = require('passport');
+    require('./passport');
+
 // this one works!
 app.get('/', (req, res) => {
     res.send('Movie time!');
 });
 
 // GET - return list of all movies to the user
-// app.get('/movies', async (req, res) => {
-//     await Movies.find().then((movies) => {
-//         res.status(201).json(movies);
-//     })
-//     .catch((err) => {
-//         console.error(err);
-//         res.status(500).send('Error: ' + err);
-//     });
-// });
-
-app.get('/movies', (req, res) => {
-    Movies.find()
-        .then((movies) => {
-            res.status(200).json(movies);
-        })
-        .catch((err) => {
-            console.error(err);
-            res.status(500).send('Error: ' + err);
-        });
+app.get('/movies', passport.authenticate('jwt', { session: false }), async (req, res) => {
+    await Movies.find().then((movies) => {
+        res.status(201).json(movies);
+    })
+    .catch((err) => {
+        console.error(err);
+        res.status(500).send('Error: ' + err);
+    });
 });
+
+// app.get('/movies', (req, res) => {
+//     Movies.find()
+//         .then((movies) => {
+//             res.status(200).json(movies);
+//         })
+//         .catch((err) => {
+//             console.error(err);
+//             res.status(500).send('Error: ' + err);
+//         });
+// });
 
 // GET - return data about single movie by title
 app.get('/movies/title/:Title', async (req, res) => {
