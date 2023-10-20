@@ -1,0 +1,7 @@
+{"_id":{"$oid":"650c7c67111e1169ee4b2acb"},"Password":"jupi","Email":"james.bond@jupiter.com","Birthdate":"1972-09-08","FavouriteMovies":["The Bridges of Madison County"],"Username":"James Bond"}
+{"_id":{"$oid":"650c7d1b111e1169ee4b2acc"},"Password":"aide","Email":"vivien.fox@jupiter.com","Birthdate":"1980-09-06","FavouriteMovies":["Stardust","House of Flying Daggers","Burlesque",{"$oid":"650b50627595b08f8967f443"}],"Username":"Vivien Fox"}
+{"_id":{"$oid":"650c7d7a111e1169ee4b2acd"},"Password":"foxy","Email":"lilly.renard@jupiter.com","Birthdate":"1987-09-08","FavouriteMovies":["3000 Years of Longing","Avanti!"],"Username":"Lilly Renard"}
+{"_id":{"$oid":"650c8e3b7555a4ae14b9e53f"},"Password":"dolphin","Email":"cassy.ope@jupiter.com","Birthdate":"1987-08-24","FavouriteMovies":[{"$oid":"650b5a577595b08f8967f447"},{"$oid":"650b50627595b08f8967f443"}],"Username":"Cassy Opeiya"}
+{"_id":{"$oid":"652992f1dc74b9911e43ae4f"},"Password":"sussie","Email":"susan.fox@jupiter.com","FavouriteMovies":[],"__v":0,"Username":"Susan Fox"}
+{"_id":{"$oid":"652ff9358454e7cb47b977b3"},"Username":"Leandine","Password":"shiva","Email":"leandine@jupiter.com","FavouriteMovies":[],"__v":0}
+{"_id":{"$oid":"652ffda21582d6fde10fbf5a"},"Username":"Sonnillion","Password":"rofl","Email":"sonni@jupiter.com","FavouriteMovies":[],"__v":0}
