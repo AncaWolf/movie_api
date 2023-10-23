@@ -28,7 +28,7 @@ const cors = require('cors');
 
 // giving access only to certain origins
 app.use(cors({
-    origin: (origina, callback) => {
+    origin: (origin, callback) => {
         if(!origin) return callback(null, true);
         if(allowedOrigins.indexOf(origin) === -1){
             let message = 'The CORS policy for this application does not allow access from origin ' + origin;
