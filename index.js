@@ -11,8 +11,8 @@ const Movies = Models.Movie;
 const Users = Models.User;
 
 // mongoose.connect('mongodb://localhost:27017/cfDB', {useNewUrlParser: true, useUnifiedTopology: true });
-mongoose.connect(process.env.CONNECTION_URI, {useNewUrlParser: true, useUnifiedTopology: true });
-// mongoose.connect('mongodb+srv://AncaWolf:cluster1987@awolf-cluster.aslzhms.mongodb.net/?retryWrites=true&w=majority', {useNewUrlParser: true, useUnifiedTopology: true });
+// mongoose.connect(process.env.CONNECTION_URI, {useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect('mongodb+srv://AncaWolf:cluster1987@awolf-cluster.aslzhms.mongodb.net/?retryWrites=true&w=majority', {useNewUrlParser: true, useUnifiedTopology: true });
 
 const app = express();
 
@@ -208,7 +208,7 @@ app.post('/users',
     [
     check('Username', 'Username is required').isLength({min: 5}),
     check('Username', 'Username contains non alphanumeric characters - not allowed').isAlphanumeric(),
-    check('Password', 'Password is required').isEmpty(),
+    check('Password', 'Password is needed').isEmpty(),
     check('Email', 'Email does not appear to be valid').isEmail()
     ], async (req, res) => {
 // check validation objects for errors
