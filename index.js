@@ -85,7 +85,7 @@ app.get('/movies/genre/:Genre', passport.authenticate('jwt', {session: false}), 
     .catch((err) => {
         console.error(err);
         res.status(500).send('Error: ' + err);
-    });W
+    });
 });
 
 // GET - return data about director by name
