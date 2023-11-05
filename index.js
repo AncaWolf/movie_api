@@ -12,7 +12,7 @@ const Users = Models.User;
 
 // mongoose.connect('mongodb://localhost:27017/cfDB', {useNewUrlParser: true, useUnifiedTopology: true });
 // mongoose.connect(process.env.CONNECTION_URI, {useNewUrlParser: true, useUnifiedTopology: true });
-mongoose.connect('mongodb+srv://AncaWolf:cluster1987@awolf-cluster.aslzhms.mongodb.net/?retryWrites=true&w=majority', {useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect('mongodb+srv://AncaWolf:cluster1987@awolf-cluster.aslzhms.mongodb.net/myFlixDB?retryWrites=true&w=majority', {useNewUrlParser: true, useUnifiedTopology: true });
 mongoose.set('debug', true);
 const app = express();
 
