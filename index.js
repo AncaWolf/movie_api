@@ -49,12 +49,24 @@ app.get('/', (req, res) => {
 });
 
 // GET - return list of all movies to the user
+// app.get('/movies', async (req, res) => {
+//     await Movies.find().then((movies) => {
+//         res.status(200).json(movies);
+//     })
+//     .catch((err) => {
+//         console.error(err);
+//         res.status(500).send('Error: ' + err);
+//     });
+// });
+
 app.get('/movies', async (req, res) => {
+    console.log('Fetching movies...');
     await Movies.find().then((movies) => {
+        console.log('Movies found:', movies);
         res.status(200).json(movies);
     })
     .catch((err) => {
-        console.error(err);
+        console.error('Error fetching movies:', err);
         res.status(500).send('Error: ' + err);
     });
 });
