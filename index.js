@@ -28,6 +28,8 @@ const cors = require('cors');
 // app.use(cors());
 
 // giving access only to certain origins
+let allowedOrigins = ['http://localhost:1234'];
+
 app.use(cors({
     origin: (origin, callback) => {
         if (!origin) return callback(null, true);
