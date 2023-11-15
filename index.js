@@ -28,7 +28,7 @@ const cors = require('cors');
 // app.use(cors());
 
 // giving access only to certain origins
-let allowedOrigins = ['http://localhost:1234'];
+let allowedOrigins = ['http://localhost:1234', 'http://localhost:8080', 'https://awolf-movies-app.onrender.com/movies'];
 
 app.use(cors({
     origin: (origin, callback) => {
