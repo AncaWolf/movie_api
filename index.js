@@ -60,7 +60,7 @@ app.get('/', (req, res) => {
 //     });
 // });
 
-app.get('/movies', async (req, res) => {
+app.get('/movies', passport.authenticate('jwt', { session: false }), async (req, res) => {
     console.log('Fetching movies...');
     await Movies.find().then((movies) => {
         console.log('Movies found:', movies);
