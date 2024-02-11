@@ -26,7 +26,7 @@ app.use(morgan('common'));
 app.use('/documentation.html', express.static('public'));
 
 // giving access only to certain origins
-let allowedOrigins = ['http://localhost:1234', 'http://localhost:8080', 'https://awolf-movies-app.onrender.com', "https://awolf-myflix.netlify.app"];
+let allowedOrigins = ['http://localhost:1234', 'http://localhost:8080', 'https://awolf-movies-app.onrender.com', "https://myflix-client2.netlify.app"];
 
 app.use(cors({
   origin: (origin, callback) => {
