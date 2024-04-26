@@ -19,24 +19,6 @@ let movieSchema = mongoose.Schema({
   Featured: Boolean
 });
 
-// let movieSchema = mongoose.Schema({
-//   Title: { type: String, required: true },
-//   Description: { type: String, required: true },
-//   Genre: { type: String, required: true },
-//   // Genre: {
-//   //   Name: String,
-//   //   Description: String
-//   // },
-//   Director: { type: String, required: true },
-//   // Director: {
-//   //   Name: String,
-//   //   Bio: String
-//   // },
-//   // Actors: [String],
-//   ImagePath: String,
-//   // Featured: Boolean
-// });
-
 let userSchema = mongoose.Schema({
   Username: { type: String, required: true },
   Password: { type: String, required: true },
@@ -57,4 +39,3 @@ let User = mongoose.model('User', userSchema);
 module.exports.Movie = Movie;
 module.exports.User = User;
 
-// mongoose.connect('mongodb://localhost:27017/cfDB', { useNewUrlParser: true, useUnifiedTopology: true });
