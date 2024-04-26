@@ -1,4 +1,4 @@
-GET# movie API
+# movie API
  
 ## Endpoints
 
